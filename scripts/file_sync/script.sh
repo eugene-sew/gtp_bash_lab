@@ -55,10 +55,10 @@ mkdir -p "$TMP_LOCAL" "$TMP_REMOTE"
 # Step 1: Mirror both sides into temporaries
 # -----------------------------------------------------------------------------
 log "Mirroring local → tmp_local"
-rsync -a --delete --itemize-changes "$LOCAL_DIR/" "$TMP_LOCAL/" | while read -r line; do log "LOCAL→TMP: $line"; done
+rsync -a --itemize-changes "$LOCAL_DIR/" "$TMP_LOCAL/" | while read -r line; do log "LOCAL→TMP: $line"; done
 
 log "Mirroring remote → tmp_remote"
-rsync -a --delete --itemize-changes "$REMOTE_DIR/" "$TMP_REMOTE/" | while read -r line; do log "REMOTE→TMP: $line"; done
+rsync -a --itemize-changes "$REMOTE_DIR/" "$TMP_REMOTE/" | while read -r line; do log "REMOTE→TMP: $line"; done
 
 # -----------------------------------------------------------------------------
 # Step 2: Detect and resolve conflicts
